@@ -2,143 +2,212 @@
   <img src="erd/ERD.png" alt="Entity Relationship Diagram" width="700"/>
 </div>
 
-<div align="center">
-  <h1>E-Commerce Backend System</h1>
-</div>
-<div align="center">
-  This repository contains the backend code for an E-Commerce platform built with **Spring Boot** and **MySQL**. It provides a robust solution for managing customer orders, products, categories, and more, designed with modern software engineering practices.
-</div>
+<h1 align="center">🛍️ Spring Boot E-Commerce Backend System</h1>
 
+<p align="center">
+  A robust and scalable backend system for an E-Commerce platform built with <strong>Spring Boot</strong> and <strong>MySQL</strong>. Designed to handle product management, customer orders, authentication, and payment processing with modern best practices.
+</p>
 
-## 🚀 Table of Contents
+---
 
-- [Introduction](#-introduction)
-- [Features](#-features)
-- [Technologies Used](#-technologies-used)
-- [Architecture](#-architecture)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [API Documentation](#-api-documentation)
-- [Testing](#-testing)
+## 📚 Table of Contents
 
-## 🔍 Introduction
+- [📖 Introduction](#-introduction)
+- [✨ Features](#-features)
+- [🧰 Technologies Used](#-technologies-used)
+- [🏛️ Architecture](#-architecture)
+- [⚙️ Installation](#-installation)
+- [🚀 Usage](#-usage)
+- [📘 API Documentation](#-api-documentation)
 
-This is the backend for a modern **E-Commerce platform** designed to handle:
+---
 
-- User authentication and management
-- Product inventory management
-- Order processing and shipment tracking
-- Payment gateway integration
-- Dynamic pricing and catalog management
+## 📖 Introduction
 
-It is designed to be scalable, secure, and highly extensible.
+This backend system powers a modern e-commerce platform with core functionalities including:
+
+- Secure user authentication and registration
+- Product catalog and category management
+- Shopping cart and order lifecycle handling
+- Payment gateway integration with Stripe
+- RESTful API support with Swagger documentation
+
+Built for maintainability, security, and extensibility.
+
+---
 
 ## ✨ Features
 
-- **User Authentication** using OAuth2 and Okta.
-- **Product and Category Management**.
-- **Order and Cart Management** with shipping and billing details.
-- **Stripe Integration** for secure payment handling.
-- **Swagger UI** for easy API exploration.
-- **Database Design** with relational mappings between entities (e.g., `Order`, `Product`, `Customer`, etc.).
+- 🔐 **OAuth2 Authentication** via Okta
+- 📦 **Product & Category Management**
+- 🛒 **Cart and Order Processing** with billing/shipping
+- 💳 **Stripe Integration** for secure payments
+- 📘 **Interactive API Documentation** with Swagger UI
+- 🧩 **Relational Entity Design** using JPA & Hibernate
 
-## 💻 Technologies Used
+---
 
-- **Java** (Spring Boot)
-- **MySQL** (Database)
-- **Hibernate JPA** (ORM for managing database operations)
-- **Swagger** (API documentation and testing)
-- **[Okta](https://www.okta.com/)** (OAuth2 Authentication)
-- **[Stripe](https://stripe.com/)** (Payment Integration)
+## 🧰 Technologies Used
 
-## 🏗️ Architecture
+- **Java 17** (Spring Boot)
+- **MySQL** (Relational Database)
+- **Spring Data JPA** (ORM)
+- **Swagger** (API Testing & Docs)
+- **Okta OAuth2** (Authentication)
+- **Stripe** (Payments)
 
-The system follows **Microservice Architecture** and is built with best practices in mind:
+---
 
-- **Entities**: Define the structure of the main components such as `Product`, `Order`, `Customer`, `Address`, and `Payment`.
-- **Repositories**: Encapsulate the logic for querying and persisting data in the database.
-- **Services**: Contain the business logic.
-- **Controllers**: Handle HTTP requests and map them to corresponding services.
+## 🏛️ Architecture
 
-The key relationships between entities are:
+This project follows a modular and layered architecture:
 
-- A **Customer** can have multiple **Orders**.
-- An **Order** contains multiple **OrderItems**.
-- An **Order** has one **Billing Address** and one **Shipping Address**.
-- Each **Product** belongs to a **ProductCategory**.
+- **Entities**: Core domain models (e.g., `Product`, `Order`, `Customer`)
+- **Repositories**: Handle data persistence
+- **Services**: Contain business logic
+- **Controllers**: REST API endpoints
+- **Security**: OAuth2 with Okta
+- **Configuration**: Externalized settings via `.env` and `application.properties`
 
+### 🔗 Entity Relationships
 
-## 🛠️ Installation
+- One **Customer** → Many **Orders**
+- One **Order** → Many **OrderItems**
+- One **Order** → One **Shipping Address** & One **Billing Address**
+- One **Product** → One **ProductCategory**
 
-Follow these steps to get your environment set up:
+---
 
-### Prerequisites
-- **JDK 17** or later
-- **Maven** for building the project
-- **MySQL** database server
-- **Okta Account** for OAuth2 authentication (visit [Okta](https://www.okta.com/) to create one)
-- **Stripe Account** for payment integration (visit [Stripe](https://stripe.com/) to create one)
+## ⚙️ Installation
 
-### Setup
+### 📌 Prerequisites
 
-1.  **Clone the repository**:
+- Java 17+
+- Maven
+- MySQL Server
+- Okta Developer Account
+- Stripe Developer Account
+
+### 🧾 Setup Instructions
+
+1. **Clone the Repository**
     ```bash
     git clone https://github.com/hendrowunga/spring-boot-ecommerce-backend.git
     cd spring-boot-ecommerce-backend
     ```
 
-2.  **Set up your `.env` file** for environment variables:
+2. **Create `.env` File**  
+   Copy example file and customize:
+    ```bash
+    cp .env.example .env
+    ```
 
-    *   Copy `.example.env` to `.env`:
+3. **Configure the `.env` File**  
+   Update your credentials and configurations:
+    ```env
+    OKTA_CLIENT_ID=your-okta-client-id
+    OKTA_ISSUER=https://your-okta-domain/oauth2/default
 
-        ```bash
-        cp .env.example .env
-        ```
+    DATABASE_URL=jdbc:mysql://localhost:3306/ecommerce
+    DATABASE_USERNAME=root
+    DATABASE_PASSWORD=password
 
-3.  **Configure the `.env` file**:
-    Add your Okta credentials, MySQL connection details, and Stripe API keys in the `.env` file.
+    STRIPE_SECRET_KEY=your-stripe-secret
+    ALLOWED_ORIGINS=http://localhost:3000
+    ```
 
-4.  **Build the project**:
-
+4. **Build the Project**
     ```bash
     mvn clean install
     ```
 
-5.  **Run the application**:
-
+5. **Run the Application**
     ```bash
     mvn spring-boot:run
     ```
 
-The application will be running at `http://localhost:9898`.
+Once started, access the application at `http://localhost:9898`.
+
+---
 
 ## 🚀 Usage
 
-Once the application is running, you can access the following endpoints:
+After running the app, you can interact with the system through:
 
-*   **Swagger UI**: Visit `http://localhost:9898/swagger-ui/index.html` to explore and test the API.
-*   **Authentication**: Use Okta to authenticate and manage users.
-*   **Order Management**: Create, update, and track orders.
-*   **Product Management**: Add and manage products and categories.
+- 🧪 **Swagger UI**: [http://localhost:9898/swagger-ui/index.html](http://localhost:9898/swagger-ui/index.html)
+- 🔐 **Authentication**: Secure endpoints via Okta
+- 🛍️ **Product APIs**: View, add, and manage products
+- 📦 **Order APIs**: Place and manage customer orders
 
-### API Endpoints
+### 📡 Sample Endpoints
 
-*   `POST /api/customers`: Register a new customer.
-*   `GET /api/products`: Get a list of all products.
-*   `POST /api/orders`: Create a new order.
-*   `GET /api/orders/{id}`: Get order details.
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/customers` | Register a new customer |
+| `GET`  | `/api/products`  | Fetch product catalog |
+| `POST` | `/api/orders`    | Create a new order |
+| `GET`  | `/api/orders/{id}` | Get specific order details |
 
-## 📚 API Documentation
+---
 
-The **API documentation** is available via **Swagger UI**. All endpoints are described in detail, including required parameters and responses.
+## 📘 API Documentation
 
-Access it [here](http://localhost:9898/swagger-ui/index.html).
+Swagger UI provides a clean interface to test all APIs:
 
-## 🧪 Testing
+<div align="center">
+  <img src="erd/sw1.png" alt="Swagger UI" width="800"/>
+</div>
+<div align="center">
+  <img src="erd/sw2.png" alt="Swagger UI" width="800"/>
+</div><div align="center">
+  <img src="erd/sw3.png" alt="Swagger UI" width="800"/>
+</div>
 
-1.  **Unit Tests**: We use **JUnit** and **Mockito** for unit testing.
-2.  **Integration Tests**: The tests are located in `src/test/java` and can be run using:
+🔗 Open in browser:  
+[http://localhost:9898/swagger-ui/index.html](http://localhost:9898/swagger-ui/index.html)
 
-    ```bash
-    mvn test
-    ```
+---
+
+## 📸 Sample Stripe Dashboard
+
+### 🧾 Stripe Dashboard – Payment Confirmation View
+
+The following image displays the **Stripe dashboard interface** that confirms a successful payment from a test transaction. It shows details such as:
+
+- Customer's email and name
+- Product/service purchased
+- Payment amount
+- Payment method (e.g., Visa ending in 4242)
+- Timestamp of the transaction
+
+<div align="center">
+  <img src="erd/sw41.png" alt="Stripe Dashboard" width="800"/>
+</div>
+
+---
+
+### 📧 Stripe Receipt Email – "Receipt from New business sandbox"
+
+Below is a sample email automatically sent by **Stripe** to the customer as a payment receipt.
+
+🧾 **Receipt #1077-4343**
+
+- 💵 **Amount paid**: $85.95
+- 🕒 **Date paid**: Jun 6, 2025, 8:38:46 AM
+- 💳 **Payment method**: Visa - 4242
+
+#### 💼 Summary:
+- Hen Store - Purchase: **$85.95**
+- Total Paid: **$85.95**
+
+If you have any questions, contact us at **wungambara@gmail.com**.
+
+<div align="center">
+  <img src="erd/sw42.png" alt="Stripe Receipt Email" width="800"/>
+</div>
+
+---
+
+<div align="center">
+  <p>Thank You</p>
+</div>
