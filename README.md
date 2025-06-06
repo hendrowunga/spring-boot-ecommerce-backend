@@ -170,40 +170,41 @@ Swagger UI provides a clean interface to test all APIs:
 
 ## 📸 Sample Stripe Dashboard
 
-### 🧾 Stripe Dashboard – Payment Confirmation View
+### 🧾 Stripe Dashboard – Transactions View
 
-The following image displays the **Stripe dashboard interface** that confirms a successful payment from a test transaction. It shows details such as:
+The following image displays the **Stripe dashboard's transactions list**, where merchants can view the status and details of all payments processed through the system. For a successful test transaction, it shows key details such as:
 
-- Customer's email and name
-- Product/service purchased
-- Payment amount
-- Payment method (e.g., Visa ending in 4242)
-- Timestamp of the transaction
+- **Amount**: The total amount paid by the customer (e.g., US$85.95).
+- **Status**: Confirmation of a successful payment (e.g., "Succeeded ✅").
+- **Payment Method**: The card type and last four digits (e.g., Visa ending in 4242).
+- **Description**: Details of the purchase (e.g., "Hen Store - Purchase").
+- **Customer**: The customer's email address (e.g., `wungambara@gmail.com`).
+- **Date**: The timestamp of the transaction.
 
 <div align="center">
-  <img src="erd/sw41.png" alt="Stripe Dashboard" width="800"/>
+  <img src="erd/sw41.png" alt="Stripe Dashboard - Transactions View" width="800"/>
 </div>
 
 ---
 
-### 📧 Stripe Receipt Email – "Receipt from New business sandbox"
+### 📧 Stripe Receipt Email – Example from Sandbox
 
-Below is a sample email automatically sent by **Stripe** to the customer as a payment receipt.
+Below is a sample email automatically sent by **Stripe** to the customer as a payment receipt after a successful transaction. This example is from the Stripe sandbox environment.
 
 🧾 **Receipt #1077-4343**
 
 - 💵 **Amount paid**: $85.95
 - 🕒 **Date paid**: Jun 6, 2025, 8:38:46 AM
-- 💳 **Payment method**: Visa - 4242
+- 💳 **Payment method**: Visa ending in 4242
 
 #### 💼 Summary:
 - Hen Store - Purchase: **$85.95**
-- Total Paid: **$85.95**
+- **Amount paid**: **$85.95**
 
-If you have any questions, contact us at **wungambara@gmail.com**.
+The email also provides a contact point for customer inquiries (e.g., `wungambara@gmail.com`).
 
 <div align="center">
-  <img src="erd/sw42.png" alt="Stripe Receipt Email" width="800"/>
+  <img src="erd/sw42.png" alt="Stripe Receipt Email - Sandbox Example" width="800"/>
 </div>
 
 ---
