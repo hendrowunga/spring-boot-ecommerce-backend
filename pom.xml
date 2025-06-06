@@ -116,6 +116,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>springboot-images-new</finalName>
 	</build>
 
 </project>
